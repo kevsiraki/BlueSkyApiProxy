@@ -1,0 +1,6 @@
+@BlueSkyApiProxy_HostAddress = http://localhost:5196
+
+GET {{BlueSkyApiProxy_HostAddress}}/
+Accept: application/json
+
+###
