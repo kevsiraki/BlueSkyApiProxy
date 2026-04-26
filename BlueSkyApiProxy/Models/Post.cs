@@ -7,5 +7,6 @@
     {
         public string? text { get; set; }
         public string? createdAt { get; set; }
+        public object? embed { get; set; }
     }
 }

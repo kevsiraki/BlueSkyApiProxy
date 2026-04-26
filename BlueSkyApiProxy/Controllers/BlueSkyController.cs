@@ -18,6 +18,31 @@ namespace BlueSkyApiProxy.Controllers
         }
 
         [HttpPost("post")]
+        public async Task<IActionResult> PostToBluesky([FromBody] CreatePostRequest request)
+        {
+            try
+            {
+                byte[]? imageBytes = null;
+
+                if (!string.IsNullOrEmpty(request.imageBase64))
+                {
+                    imageBytes = Convert.FromBase64String(request.imageBase64);
+                }
+
+                await _blueSkyService.postToBluesky(
+                    request.text,
+                    imageBytes,
+                    request.mimeType
+                );
+
+                return Ok("Post created successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error posting to BlueSky: {ex.Message}");
+            }
+        }
+        /*
         public async Task<IActionResult> PostToBluesky([FromBody] Post post)
         {
             try
@@ -30,5 +55,6 @@ namespace BlueSkyApiProxy.Controllers
                 return StatusCode(500, $"Error posting to BlueSky: {ex.Message}");
             }
         }
+        */
     }
 }
