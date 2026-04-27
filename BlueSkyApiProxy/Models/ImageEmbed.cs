@@ -7,13 +7,7 @@
     {
         [JsonPropertyName("$type")]
         public string Type { get; set; } = "app.bsky.embed.images";
-
-        public List<ImageItem> images { get; set; } = new();
-    }
-
-    public class ImageItem
-    {
-        public string alt { get; set; } = "";
-        public JsonElement image { get; set; }
+        [JsonPropertyName("images")]
+        public List<ImageItem> Images { get; set; } = new();
     }
 }

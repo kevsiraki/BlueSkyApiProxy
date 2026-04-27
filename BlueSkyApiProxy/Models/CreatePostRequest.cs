@@ -1,11 +1,14 @@
-﻿namespace BlueSkyApiProxy.Models
+﻿using System.Text.Json.Serialization;
+
+namespace BlueSkyApiProxy.Models
 {
     public class CreatePostRequest
     {
-        public string? text { get; set; }
-
-        // optional image
-        public string? imageBase64 { get; set; }
-        public string? mimeType { get; set; }
+        [JsonPropertyName("text")]
+        public string? Text { get; set; }
+        [JsonPropertyName("images")]
+        public List<ImageRequest>? Images { get; set; }
+        [JsonPropertyName("facets")]
+        public List<Facet>? Facets { get; set; }
     }
 }
